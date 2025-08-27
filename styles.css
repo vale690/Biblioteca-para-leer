@@ -1,0 +1,171 @@
+/* Estilo general */
+* { box-sizing: border-box; }
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 24px;
+  color: #222;
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  color: #2b3a42;
+  margin: 0 0 18px 0;
+  font-size: 28px;
+}
+
+/* Buscador */
+.buscador {
+  text-align: center;
+  margin-bottom: 14px;
+}
+.buscador input {
+  width: min(680px, 90%);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccd6dd;
+  font-size: 14px;
+}
+
+/* Formulario de entrada */
+form, .form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+/* Inputs y selects estilos compartidos */
+input[type="text"], select, button {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #c9d3d9;
+  font-size: 14px;
+  outline: none;
+}
+
+input[type="text"] {
+  min-width: 160px;
+}
+
+/* Botones */
+button {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background .18s, transform .08s;
+  padding: 9px 12px;
+  border-radius: 8px;
+}
+
+button:hover { background: #2c88c7; transform: translateY(-1px); }
+
+/* Botones secundarios: Leer / Eliminar */
+button.read-btn {
+  background: #27ae60;
+}
+button.read-btn:hover { background: #238e53; }
+
+button.delete-btn {
+  background: #e74c3c;
+}
+button.delete-btn:hover { background: #c73b2a; }
+
+/* Contenedor de la lista de libros */
+.lista-libros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 6px;
+}
+
+/* Tarjeta de libro */
+.book, .libro {
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(18,35,49,0.06);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-height: 170px;
+}
+
+/* Imagen de portada */
+.book img.cover, .libro img {
+  width: 110px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e6eef2;
+  background: #f8fafb;
+}
+
+/* Información del libro */
+.book p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+/* Estado */
+.estado {
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+.leido { background:#dff3e6; color:#1b6a3e; }
+.pendiente { background:#fff0d6; color:#7a5600; }
+
+/* Controles dentro de la tarjeta */
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Visor (iframe) */
+#reader {
+  margin-top: 20px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(18,35,49,0.06);
+}
+
+#reader h2 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #2b3a42;
+}
+
+#bookFrame {
+  width: 100%;
+  height: 560px;
+  border: 1px solid #e1e8ec;
+  border-radius: 8px;
+}
+
+/* Responsive: reduce altura del iframe en pantallas pequeñas */
+@media (max-width: 720px) {
+  #bookFrame { height: 420px; }
+  .book img.cover { width: 92px; height: 130px; }
+  input[type="text"] { min-width: 120px; }
+}
+
+/* Mensajes y placeholders */
+.empty-note {
+  text-align: center;
+  color: #666;
+  padding: 18px 6px;
+}
