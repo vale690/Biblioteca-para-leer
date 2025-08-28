@@ -12,27 +12,19 @@
     <input type="text" id="buscar" placeholder="Buscar por título o autor...">
   </div>
 
-  <div>
+  <div class="formulario">
     <input type="text" id="title" placeholder="Título" required>
     <input type="text" id="author" placeholder="Autor" required>
     <input type="text" id="cover" placeholder="URL de la portada (opcional)">
-    <input type="text" id="fileUrl" placeholder="URL del libro (PDF o EPUB)">
+    <input type="text" id="pdf" placeholder="URL del libro en PDF (opcional)">
     <select id="status">
       <option value="Pendiente">Pendiente</option>
       <option value="Leído">Leído</option>
     </select>
-    <button type="submit" form="book-form">Agregar Libro</button>
+    <button id="addBook">Agregar Libro</button>
   </div>
 
-  <form id="book-form"></form>
-
-  <div class="lista-libros" id="library"></div>
-
-  <!-- 📖 Visor de libros -->
-  <div id="reader" style="display:none; margin-top:20px;">
-    <h2>📖 Leyendo...</h2>
-    <iframe id="bookFrame" width="100%" height="500px"></iframe>
-  </div>
+  <div class="library" id="library"></div>
 
   <script src="script.js"></script>
 </body>
