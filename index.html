@@ -12,19 +12,20 @@
     <input type="text" id="buscar" placeholder="Buscar por título o autor...">
   </div>
 
-  <div class="formulario">
+  <!-- Usamos un formulario en lugar de div -->
+  <form id="book-form">
     <input type="text" id="title" placeholder="Título" required>
     <input type="text" id="author" placeholder="Autor" required>
     <input type="text" id="cover" placeholder="URL de la portada (opcional)">
-    <input type="text" id="pdf" placeholder="URL del libro en PDF (opcional)">
+    <input type="text" id="pdf" placeholder="URL del libro PDF (opcional)">
     <select id="status">
       <option value="Pendiente">Pendiente</option>
       <option value="Leído">Leído</option>
     </select>
-    <button id="addBook">Agregar Libro</button>
-  </div>
+    <button type="submit">Agregar Libro</button>
+  </form>
 
-  <div class="library" id="library"></div>
+  <div id="library" class="lista-libros"></div>
 
   <script src="script.js"></script>
 </body>
