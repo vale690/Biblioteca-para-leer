@@ -6,18 +6,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Biblioteca Interactiva</h1>
+  <h1>📚 Biblioteca Interactiva</h1>
 
   <div class="buscador">
     <input type="text" id="buscar" placeholder="Buscar por título o autor...">
   </div>
 
-  <!-- Usamos un formulario en lugar de div -->
-  <form id="book-form">
+  <!-- Formulario para agregar libros -->
+  <form id="book-form" class="formulario">
     <input type="text" id="title" placeholder="Título" required>
     <input type="text" id="author" placeholder="Autor" required>
     <input type="text" id="cover" placeholder="URL de la portada (opcional)">
-    <input type="text" id="pdf" placeholder="URL del libro PDF (opcional)">
+    <input type="text" id="pdf" placeholder="URL del libro en PDF (opcional)">
     <select id="status">
       <option value="Pendiente">Pendiente</option>
       <option value="Leído">Leído</option>
@@ -25,7 +25,14 @@
     <button type="submit">Agregar Libro</button>
   </form>
 
+  <!-- Lista de libros -->
   <div id="library" class="lista-libros"></div>
+
+  <!-- Visor integrado -->
+  <div id="reader" style="display:none; margin-top:20px;">
+    <h2>📖 Leyendo...</h2>
+    <iframe id="bookFrame" src="" frameborder="0"></iframe>
+  </div>
 
   <script src="script.js"></script>
 </body>
