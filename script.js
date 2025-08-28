@@ -1,53 +1,66 @@
-// Espera a que la página cargue
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("book-form");
     const library = document.getElementById("library");
-    const reader = document.getElementById("reader");
-    const bookFrame = document.getElementById("bookFrame");
+    const addBookBtn = document.getElementById("addBook");
+    const searchInput = document.getElementById("buscar");
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        // Obtiene los valores del formulario
-        const title = document.getElementById("title").value;
-        const author = document.getElementById("author").value;
-        const coverUrl = document.getElementById("cover").value;
-        const fileUrl = document.getElementById("fileUrl").value;
+    // Agregar libro
+    addBookBtn.addEventListener("click", () => {
+        const title = document.getElementById("title").value.trim();
+        const author = document.getElementById("author").value.trim();
+        const coverUrl = document.getElementById("cover").value.trim();
+        const pdf = document.getElementById("pdf").value.trim();
         const status = document.getElementById("status").value;
 
-        // Crea un contenedor para el libro
+        if (!title || !author) {
+            alert("Por favor, completa el título y el autor");
+            return;
+        }
+
+        // Crear contenedor de libro
         const bookDiv = document.createElement("div");
         bookDiv.classList.add("book");
 
-        // Si hay portada
+        // Portada
         if (coverUrl) {
             const img = document.createElement("img");
             img.src = coverUrl;
             img.alt = title;
-            img.classList.add("cover");
             bookDiv.appendChild(img);
         }
 
-        // Info del libro
+        // Info
         const info = document.createElement("p");
         info.textContent = ${title} - ${author} [${status}];
         bookDiv.appendChild(info);
 
-        // Botón "Leer" si hay archivo
-        if (fileUrl) {
-            const btnLeer = document.createElement("button");
-            btnLeer.textContent = "Leer";
-            btnLeer.addEventListener("click", () => {
-                bookFrame.src = fileUrl;
-                reader.style.display = "block";
-            });
-            bookDiv.appendChild(btnLeer);
+        // Link PDF
+        if (pdf) {
+            const link = document.createElement("a");
+            link.href = pdf;
+            link.target = "_blank";
+            link.textContent = "📖 Leer libro";
+            bookDiv.appendChild(link);
         }
 
-        // Agrega el libro a la biblioteca
+        // Agregar a la biblioteca
         library.appendChild(bookDiv);
 
-        // Limpia el formulario
-        form.reset();
+        // Limpiar campos
+        document.getElementById("title").value = "";
+        document.getElementById("author").value = "";
+        document.getElementById("cover").value = "";
+        document.getElementById("pdf").value = "";
+        document.getElementById("status").value = "Pendiente";
+    });
+
+    // Buscar libro
+    searchInput.addEventListener("input", () => {
+        const filter = searchInput.value.toLowerCase();
+        const books = library.getElementsByClassName("book");
+
+        for (let book of books) {
+            const text = book.innerText.toLowerCase();
+            book.style.display = text.includes(filter) ? "block" : "none";
+        }
     });
 });
